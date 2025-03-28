@@ -1,0 +1,85 @@
+<!-- hospital_app/templates/hospital_app/home.html -->
+{% extends 'main.html' %}
+{% comment %} {% load static %} {% endcomment %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .nav-bar {
+            background-color: #3498db;
+            overflow: hidden;
+        }
+        
+        .nav-bar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .nav-bar li {
+            float: left;
+        }
+        
+        .nav-bar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        .nav-bar li b {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-bar li a:hover {
+            background-color: #2980b9;
+        }
+        
+        .main-content {
+            padding: 20px;
+        }
+    </style>
+    {% comment %} <link rel="stylesheet" href="{% static 'styles/style.css' %}"> {% endcomment %}
+    
+</head>
+<body>
+    <div class="nav-bar">
+        <ul>
+            <li><b>Home</b></li>
+            <li><a href="{% url 'employee_login' %}">Employee Login</a></li>
+            <li><a href="{% url 'patient_login' %}">Patient Login</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">About us</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Welcome to Our Hospital</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis vel libero posuere
+            fermentum. Suspendisse potenti. Praesent vel arcu ac elit pretium fringilla. Integer ac enim vitae
+            purus lacinia consequat. In hac habitasse platea dictumst.
+        </p>
+        <!-- Add more content as needed -->
+    </div>
+</body>
+</html>
+{% endblock %}

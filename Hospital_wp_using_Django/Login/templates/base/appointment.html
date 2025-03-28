@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h1>Your Appointments</h1>
+<ul>
+    {% for appointment in appointments %}
+    <li>
+        <p>Doctor: {{ appointment.doctor.name }}</p>
+        <p>Date: {{ appointment.date }}</p>
+        <p>Time: {{ appointment.time }}</p>
+        <p>Reason: {{ appointment.reason }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

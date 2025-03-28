@@ -1,0 +1,69 @@
+{% load static %}
+
+<header class="bg-white shadow-md">
+  <div class="container mx-auto flex items-center justify-between py-4 px-6">
+    <!-- Logo Section -->
+    <a href="{% url 'home' %}" class="flex items-center space-x-3">
+      <img src="{% static 'images/logo.svg' %}" alt="AK Hospital Logo" class="h-10 w-10" />
+      <h1 class="text-lg font-bold text-gray-800">AK Hospital Management</h1>
+    </a>
+
+    <!-- Search Form -->
+    <form class="relative flex-1 max-w-md mx-auto" method="GET" action="{% url 'home' %}">
+      <label class="flex items-center">
+        <svg class="w-5 h-5 absolute left-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          type="text"
+          name="q"
+          placeholder="Search for rooms..."
+          class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+      </label>
+    </form>
+
+    <!-- Navigation Menu -->
+    <nav class="flex items-center space-x-6 text-gray-700">
+      <a href="{% url 'home' %}" class="hover:text-blue-600">Home</a>
+      <a href="{% url 'about' %}" class="hover:text-blue-600">About Us</a>
+      <a href="{% url 'departments' %}" class="hover:text-blue-600">Departments</a>
+      <a href="{% url 'doctors' %}" class="hover:text-blue-600">Doctors</a>
+      <a href="{% url 'patient_portal' %}" class="hover:text-blue-600">Patient Portal</a>
+      <a href="{% url 'appointment' %}" class="hover:text-blue-600">Appointments</a>
+      <a href="{% url 'contact' %}" class="hover:text-blue-600">Contact Us</a>
+    </nav>
+
+    <!-- User Section -->
+    <div class="relative">
+      {% if request.user.is_authenticated %}
+      <div class="flex items-center space-x-4">
+        <a href="{% url 'patient_login' %}" class="flex items-center space-x-2">
+          <img src="https://randomuser.me/api/portraits/men/37.jpg" alt="User Avatar" class="h-10 w-10 rounded-full border" />
+          <span class="text-gray-800">{{ request.user.username }}</span>
+        </a>
+        <button
+          class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onclick="document.getElementById('dropdown-menu').classList.toggle('hidden');"
+        >
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+      <div id="dropdown-menu" class="absolute right-0 mt-2 bg-white shadow-lg rounded-lg hidden">
+        <a href="{% url 'register_EmpFrm' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settings</a>
+        <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+      </div>
+      {% else %}
+      <a
+        href="{% url 'employee_login' %}"
+        class="flex items-center space-x-2 px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        <img src="{% static 'images/avatar.svg' %}" alt="Login Icon" class="h-6 w-6" />
+        <span>Login</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</header>

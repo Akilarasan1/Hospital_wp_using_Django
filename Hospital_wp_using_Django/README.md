@@ -1,0 +1,1 @@
+Hospital management project, here i am using django framework to create login webpage for employee and patients

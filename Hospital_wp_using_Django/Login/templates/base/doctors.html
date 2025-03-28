@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h1>Doctors</h1>
+<ul>
+    {% for doctor in doctors %}
+    <li>
+        <h2>{{ doctor.name }}</h2>
+        <p>Specialization: {{ doctor.specialization }}</p>
+        <p>Department: {{ doctor.department.name }}</p>
+        <p>Availability: {{ doctor.availability }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
